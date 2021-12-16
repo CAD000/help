@@ -1,0 +1,28 @@
+import matplotlib.pyplot as plt
+
+
+def dda_plot(x, y, x1, y1):
+    dx = abs(x1 - x)
+    dy = abs(y1 - y)
+    m = dy / dx
+    list_x = [x]
+    list_y = [y]
+    step = dx if m < 1 or m == 1 else dy
+    xinc = 1 if m < 1 or m == 1 else 1 / m
+    yinc = m if m < 1 or m == 1 else 1
+    i = 0
+    while i < step: x = x + xinc; y = y + yinc; list_x.append(x);list_y.append(y);i += 1
+    print("X-Co ordinates are : {}".format(list_x))
+    print("Y-Co ordinates are : {}".format(list_y))
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.title("Drawing a line using DDA algorithm")
+    plt.plot(list_x, list_y)
+    plt.show()
+
+
+X = int(input("Enter the value of X:"))
+Y = int(input("Enter the value of Y:"))
+X1 = int(input("Enter the value of X1:"))
+Y1 = int(input("Enter the value of Y1:"))
+dda_plot(X, Y, X1, Y1)
